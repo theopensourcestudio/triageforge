@@ -1,0 +1,7 @@
+# The primary maintainer reviews changes across the repository.
+* @theopensourcestudio
+
+# Security and automation changes require explicit maintainer review.
+/.github/ @theopensourcestudio
+/src/triageforge/ai.py @theopensourcestudio
+/src/triageforge/github_event.py @theopensourcestudio
