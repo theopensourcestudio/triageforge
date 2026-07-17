@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If TriageForge helps your research or maintenance workflow, please cite the software."
+title: "TriageForge"
+type: software
+authors:
+  - name: "theopensourcestudio"
+repository-code: "https://github.com/theopensourcestudio/triageforge"
+url: "https://github.com/theopensourcestudio/triageforge"
+version: "0.1.0"
+license: MIT
+keywords:
+  - open-source maintenance
+  - issue triage
+  - pull-request risk
+  - release automation

@@ -1,0 +1,14 @@
+[
+  {
+    "number": 12,
+    "title": "CLI crashes on Windows startup",
+    "body": "Version 0.0.9 raises a UnicodeDecodeError when launched from PowerShell on Windows 11.",
+    "url": "https://github.com/example/project/issues/12"
+  },
+  {
+    "number": 19,
+    "title": "Improve installation documentation",
+    "body": "The README should include a pipx example.",
+    "url": "https://github.com/example/project/issues/19"
+  }
+]

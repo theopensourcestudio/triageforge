@@ -1,0 +1,39 @@
+name: "TriageForge maintainer report"
+description: "Generate read-only issue triage and pull-request risk reports."
+author: "theopensourcestudio"
+inputs:
+  enable-ai:
+    description: "Use optional OpenAI analysis when OPENAI_API_KEY is available."
+    required: false
+    default: "false"
+outputs:
+  labels:
+    description: "Comma-separated suggested labels for issue events."
+    value: ${{ steps.report.outputs.labels }}
+  priority:
+    description: "Suggested issue priority."
+    value: ${{ steps.report.outputs.priority }}
+  risk-level:
+    description: "Pull-request risk level."
+    value: ${{ steps.report.outputs.risk_level }}
+  risk-score:
+    description: "Pull-request risk score from 0 to 100."
+    value: ${{ steps.report.outputs.risk_score }}
+runs:
+  using: "composite"
+  steps:
+    - name: Install TriageForge
+      shell: bash
+      run: python -m pip install "$GITHUB_ACTION_PATH"
+    - name: Generate maintainer report
+      id: report
+      shell: bash
+      env:
+        OPENAI_API_KEY: ${{ env.OPENAI_API_KEY }}
+      run: |
+        args=(--event-path "$GITHUB_EVENT_PATH" --repository "$GITHUB_WORKSPACE")
+        if [[ "${{ inputs.enable-ai }}" == "true" ]]; then args+=(--ai); fi
+        triageforge event "${args[@]}"
+branding:
+  icon: "git-pull-request"
+  color: "purple"
